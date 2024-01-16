@@ -398,8 +398,20 @@ void Testbed::translate_camera(const vec3& rel, const mat3& rot, bool allow_up_d
 	reset_accumulation(true);
 }
 
+mat4x3 Testbed::nerf_matrix_to_ngp(const mat4x3& nerf_matrix) const {
+	return m_nerf.training.dataset.nerf_matrix_to_ngp(nerf_matrix);
+}
+
+mat4x3 Testbed::ngp_matrix_to_nerf(const mat4x3& ngp_matrix) const {
+	return m_nerf.training.dataset.ngp_matrix_to_nerf(ngp_matrix);
+}
+
 void Testbed::set_nerf_camera_matrix(const mat4x3& cam) {
 	m_camera = m_nerf.training.dataset.nerf_matrix_to_ngp(cam);
+}
+
+mat4x3 Testbed::get_nerf_camera_matrix(void) const {
+	return m_nerf.training.dataset.ngp_matrix_to_nerf(m_camera);
 }
 
 vec3 Testbed::look_at() const {

@@ -383,7 +383,10 @@ public:
 	void mouse_drag();
 	void mouse_wheel();
 	void load_file(const fs::path& path);
+	mat4x3 nerf_matrix_to_ngp(const mat4x3& nerf_matrix) const;
+	mat4x3 ngp_matrix_to_nerf(const mat4x3& ngp_matrix) const;
 	void set_nerf_camera_matrix(const mat4x3& cam);
+	mat4x3 get_nerf_camera_matrix() const;
 	vec3 look_at() const;
 	void set_look_at(const vec3& pos);
 	float scale() const { return m_scale; }
